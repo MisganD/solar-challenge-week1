@@ -1,0 +1,17 @@
+name: CI  # Name of the workflow
+on: [push, pull_request]  # Triggers: run on every push or pull request
+
+jobs:
+  build:  # Job named "build"
+    runs-on: ubuntu-latest  # Use GitHub's Ubuntu VM
+    steps:
+      - name: Checkout code  # Step 1: Fetch your repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python  # Step 2: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"  # Use latest Python 3.x
+
+      - name: Install dependencies  # Step 3: Install packages
+        run: pip install -r requirements.txt
