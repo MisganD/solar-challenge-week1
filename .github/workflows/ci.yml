@@ -1,0 +1,16 @@
+name: CI  # Name of the workflow
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Check Python version
+        run: python --version
+      - name: Install dependencies
+        run: pip install -r requirements.txt
